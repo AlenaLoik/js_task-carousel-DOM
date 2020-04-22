@@ -18,14 +18,22 @@ function changePosition(index, step) {
 
 btnNext.addEventListener('click', (e) => {
   if (position <= -(width * 3)) {
-    return;
+    dots.children[activeDot].classList.remove('carousel__dot_active');
+    position = 0;
+    activeDot = 0;
+    changePosition(0, 0);
+  } else {
+    changePosition(-1, width);
   }
-  changePosition(-1, width);
 });
 
 btnPrev.addEventListener('click', (e) => {
   if (position >= 0) {
-    return;
+    dots.children[activeDot].classList.remove('carousel__dot_active');
+    position = -width * 3;
+    activeDot = 3;
+    changePosition(0, 0);
+  } else {
+    changePosition(1, -width);
   }
-  changePosition(1, -width);
 });
